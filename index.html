@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <title>Profile Card</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        outline: none;
+        box-sizing: border-box;
+      }
+
+      body,
+      html {
+        width: 100%;
+        height: 100%;
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a1c4fd);
+        background-size: 400% 400%;
+        animation: gradientMove 15s ease infinite;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      @keyframes gradientMove {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      .main {
+        width: 320px;
+        max-width: 90vw;
+        background: rgba(255, 255, 255, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 25px 20px;
+        gap: 20px;
+      }
+
+      .pp {
+        width: 120px;
+        height: 120px;
+      }
+
+      .pp img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border: 3px solid #fff;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        object-fit: cover;
+        transition: transform 0.3s ease;
+        cursor: pointer;
+      }
+
+      .pp img:hover {
+        transform: scale(1.05);
+      }
+
+      h5 {
+        font-size: 24px;
+        font-weight: 700;
+        color: #333;
+        letter-spacing: 1px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+      }
+
+      .q i {
+        font-size: 16px;
+        color: #555;
+        font-style: normal;
+        font-weight: 500;
+      }
+
+      .des {
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 15px;
+        padding: 15px 20px;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        text-align: center;
+        transition: all 0.3s ease;
+        font-size: 14px;
+        color: lightsalmon;
+        line-height: 1.6;
+      }
+
+      .des:hover {
+        transform: scale(1.02);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+      }
+
+      button {
+        background: rgba(255, 255, 255, 0.15);
+        color: lightcoral;
+        padding: 12px 30px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 30px;
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 16px;
+        letter-spacing: 0.7px;
+      }
+
+      button:hover {
+        background: rgba(255, 255, 255, 0.25);
+        transform: translateY(-3px);
+      }
+
+      .icon {
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        margin-top: 10px;
+      }
+      .icon a {
+        font-size: 24px;
+        color: #333;
+        transition: color 0.3s ease, transform 0.3s ease; /* add transform transition */
+        display: inline-block; /* needed for transform to work properly */
+      }
+
+      .icon a:hover {
+        transform: translateY(-6px); /* move icon up */
+      }
+
+      /* Hover colors */
+      .icon a:nth-child(1):hover i {
+        color: #1da1f2; /* Twitter */
+      }
+      .icon a:nth-child(2):hover i {
+        color: #c13584; /* Instagram */
+      }
+      .icon a:nth-child(3):hover i {
+        color: #ea4c89; /* Basketball (custom) */
+      }
+      .icon a:nth-child(4):hover i {
+        color: #0077b5; /* LinkedIn */
+      }
+      .icon a:nth-child(5):hover i {
+        color: #000; /* GitHub */
+      }
+      .icon a:nth-child(6):hover i {
+        color: peru; /* DEV */
+      }
+
+      @media (max-width: 480px) {
+        .main {
+          width: 95vw;
+          padding: 20px;
+          gap: 15px;
+        }
+
+        .pp {
+          width: 130px;
+          height: 130px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: transparent;
+          box-shadow: 0 0 15px rgba(255, 182, 193, 0.8);
+          animation: glowPulse 2s ease-in-out infinite;
+          transition: box-shadow 0.3s ease;
+        }
+
+        .pp:hover {
+          box-shadow: 0 0 25px rgba(255, 182, 193, 1),
+            0 0 35px rgba(255, 182, 193, 0.8);
+        }
+
+        @keyframes glowPulse {
+          0% {
+            box-shadow: 0 0 10px rgba(255, 182, 193, 0.7),
+              0 0 20px rgba(255, 182, 193, 0.5);
+          }
+          50% {
+            box-shadow: 0 0 20px rgba(255, 182, 193, 0.9),
+              0 0 30px rgba(255, 182, 193, 0.7);
+          }
+          100% {
+            box-shadow: 0 0 10px rgba(255, 182, 193, 0.7),
+              0 0 20px rgba(255, 182, 193, 0.5);
+          }
+        }
+
+        .pp img {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          object-fit: cover;
+          border: 3px solid #fff;
+        }
+
+        h5 {
+          font-size: 20px;
+        }
+
+        .q i {
+          font-size: 14px;
+        }
+
+        button {
+          padding: 10px 20px;
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="pp">
+        <img src="img4.jpg" alt="Profile Picture" />
+      </div>
+      <h5>Sohail Solanki</h5>
+      <div class="q">
+        <i>Full-Stack Developer</i>
+      </div>
+      <div class="des">
+        "A driven coder blending creativity and logic to build dynamic
+        full-stack applications. Exploring the MERN stack and sharpening skills
+        to land top tech roles. Outside the code, I’m all about energy—whether
+        it’s sports, new challenges, or growth."
+      </div>
+      <div class="email">
+        <a href="mailto:work.sohail3621@gmail.com">
+          <button>Email Me</button>
+        </a>
+      </div>
+      <div class="icon">
+        <a href="https://www.facebook.com/share/1Lwp89crMj/"
+          ><i class="fa-brands fa-facebook"></i
+        ></a>
+        <a
+          href="https://www.instagram.com/_sohail_3621_?igsh=MWo5YWN3NzU0YW9iNw=="
+          ><i class="fa-brands fa-instagram"></i
+        ></a>
+        <a href="#"><i class="fa-solid fa-basketball"></i></a>
+        <a href="https://linkedin.com/in/sohail-3621" target="_blank"
+          ><i class="fa-brands fa-linkedin-in"></i
+        ></a>
+        <a href="https://github.com/sohail3621" target="_blank"
+          ><i class="fa-brands fa-github"></i
+        ></a>
+        <a href="#"><i class="fa-brands fa-dev"></i></a>
+      </div>
+    </div>
+  </body>
+</html>
